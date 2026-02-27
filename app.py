@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, login_user, logout_user, login_required
 from models import User
 from db import db
+from generate_user_keys import generate_user_keys
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
@@ -24,11 +25,8 @@ def register():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        
-        # --- TASK 3 AREA: IMPLEMENT HASHING HERE ---
-        # For now, we'll just store the plaintext (not recommended!) 
-        # to get the app running.
-        new_user = User(username=username, password_hash=password)
+        public_pem, private_pem = generate_user_keys() #Privat gemmes i databasen
+        new_user = User(username=username, password_hash=password, public_key=public_pem) 
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
