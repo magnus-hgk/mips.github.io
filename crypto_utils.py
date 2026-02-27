@@ -4,7 +4,7 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 
-# Statisk salt til projektet (for at sikre konsistens i jeres test)
+# Statisk salt til projektet (for at sikre konsistens i vores test)
 PROJECT_SALT = b'mips_semester_2_aau'
 
 class ECDHUser:
