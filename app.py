@@ -52,6 +52,13 @@ def login():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user() # This clears the Flask-Login session
+    flash('You have been logged out.')
+    return redirect(url_for('login'))
+
 with app.app_context():
     db.create_all()
 
