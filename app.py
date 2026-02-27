@@ -49,7 +49,7 @@ def login():
 @login_required
 def dashboard():
     return render_template('dashboard.html')
-
+# funktion til RSA verifikation challenge: challenge_check(public_pem, private_pem) returner True eller false 
 @app.route('/logout')
 @login_required
 def logout():
