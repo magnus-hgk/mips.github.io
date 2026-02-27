@@ -3,6 +3,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required
 from models import User
 from db import db
 from generate_user_keys import generate_user_keys
+from challenge_check import challenge_check
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
